@@ -36,7 +36,7 @@ public class Client implements Runnable{
             ObjectInputStream objectInputStream = new ObjectInputStream(this.socket.getInputStream());
             Packet responsePacket = (Packet) objectInputStream.readObject();
             if(responsePacket.getType().equals("Pong")) {
-                System.out.println(responsePacket.getType());
+                System.out.println("Client Received: " +responsePacket.getType());
                 System.out.println("Response Time: " + ((System.nanoTime() - responsePacket.getTimeNano())/1000000.00) + "ns");
                 socket.close();
             }

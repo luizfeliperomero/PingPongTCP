@@ -45,7 +45,7 @@ public class Server implements Runnable{
             try {
                 Packet packet = (Packet) objectReceived.readObject();
                 if(packet.getType().equals("Ping")) {
-                    System.out.println(packet.getType());
+                    System.out.println("Server Received: " +packet.getType());
                     packet.setType("Pong");
                     ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
                     objectOutputStream.writeObject(packet);
