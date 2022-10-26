@@ -49,6 +49,7 @@ public class Server implements Runnable{
                     packet.setType("Pong");
                     ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
                     objectOutputStream.writeObject(packet);
+                    serverSocket.close();
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
