@@ -25,9 +25,12 @@ public class Server implements Runnable{
     @Override
     public void run() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        System.out.println("-----------------------------------");
-        System.out.println("\u001B[32m" + "Server Started : " + "\u001B[37m" + dtf.format(LocalDateTime.now()) + "\u001B[0m");
-        System.out.println("-----------------------------------");
+        String serverStartedOutput = "Server Started on port " + serverSocket.getLocalPort() + " " + dtf.format(LocalDateTime.now());
+        String serverStartedOutputFormated = "\u001B[32m" + "Server Started on port " + serverSocket.getLocalPort() + " " + "\u001B[37m" + dtf.format(LocalDateTime.now()) + "\u001B[0m";
+        String dash = "-";
+        System.out.println(dash.repeat(serverStartedOutput.length()));
+        System.out.println(serverStartedOutputFormated);
+        System.out.println(dash.repeat(serverStartedOutput.length()));
         while(!serverSocket.isClosed()) {
             Socket socket = null;
             try {
