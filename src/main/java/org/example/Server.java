@@ -26,10 +26,12 @@ public class Server implements Runnable{
     public void run() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         String serverStartedOutput = "Server Started on port " + serverSocket.getLocalPort() + " " + dtf.format(LocalDateTime.now());
-        String serverStartedOutputFormated = "\u001B[32m" + "Server Started on port " + serverSocket.getLocalPort() + " " + "\u001B[37m" + dtf.format(LocalDateTime.now()) + "\u001B[0m";
+        String serverStartedOutputFormatted = "\u001B[32m" + "Server Started on port " + serverSocket.getLocalPort() + " " + "\u001B[37m" + dtf.format(LocalDateTime.now()) + "\u001B[0m";
         String dash = "-";
-        System.out.println(dash.repeat(serverStartedOutput.length()));
-        System.out.println(serverStartedOutputFormated);
+        String title = "Ping-Pong";
+        int topDashesHalfLength = (serverStartedOutput.length() - title.length())/2;
+        System.out.println(dash.repeat(topDashesHalfLength) + title + dash.repeat(topDashesHalfLength));
+        System.out.println(serverStartedOutputFormatted);
         System.out.println(dash.repeat(serverStartedOutput.length()));
         while(!serverSocket.isClosed()) {
             Socket socket = null;
